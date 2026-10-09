@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ellipse Foci</title>
+  <meta name="description" content="Balls bouncing inside an ellipse, splitting in two whenever they pass through a focal point.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <canvas id="scene" aria-label="Animation of balls bouncing inside an ellipse and splitting at its focal points"></canvas>
+
+  <header class="card title-card" id="titleCard">
+    <h1>Ellipse <span>Foci</span></h1>
+    <p>Every ray leaving one focus reflects off the wall straight into the other. All those paths have the same length&nbsp;2a, so every ball arrives in sync, and each arrival splits it in two.</p>
+    <div class="stats">
+      <div class="stat"><span class="label">Balls</span><span class="value" id="statBalls">0</span></div>
+      <div class="stat"><span class="label">Generation</span><span class="value" id="statGen">0</span></div>
+      <div class="stat"><span class="label">Splits</span><span class="value" id="statSplits">0</span></div>
+    </div>
+  </header>
+
+  <div class="hint" id="hint">Drag from a focus to launch a ball</div>
+
+  <footer class="card controls" id="controls">
+    <div class="buttons">
+      <button id="btnPause" class="icon-btn" type="button" title="Pause (Space)" aria-label="Pause">
+        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+      </button>
+      <button id="btnReset" class="icon-btn" type="button" title="Restart (R)" aria-label="Restart">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>
+      </button>
+    </div>
+    <label class="control">
+      <span class="control-head"><span>Speed</span><output id="outSpeed">1.00×</output></span>
+      <input type="range" id="inSpeed" min="-2.32" max="2" step="0.01" value="0">
+    </label>
+    <label class="control">
+      <span class="control-head"><span>Eccentricity</span><output id="outEcc">0.75</output></span>
+      <input type="range" id="inEcc" min="0" max="0.92" step="0.01" value="0.75">
+    </label>
+    <label class="control">
+      <span class="control-head"><span>Max balls</span><output id="outMax">512</output></span>
+      <input type="range" id="inMax" min="3" max="11" step="1" value="9">
+    </label>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
